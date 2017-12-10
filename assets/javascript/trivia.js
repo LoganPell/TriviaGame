@@ -25,19 +25,23 @@
     choices: ['Houston', 'Atlanta', 'Los Angeles', 'New York'],
     correctAnswer: 1
   }];
-
-var timeLeft = 15;
-var countDown = setInterval(function() {
-		timeLeft--;
-		$("#timer").text(timeLeft);
-}, 1000);
-
-
   
   var questionCounter = 0; //Tracks question number
   var selections = []; //Array containing user choices
   var quiz = $('#quiz'); //Quiz div object
-  
+
+  displayScore();
+
+    var timeLeft = 40; //Time displayed
+	var countDown = setInterval(function count() { //Countdown function
+		timeLeft--;
+		$("#timer").text(timeLeft);
+		if (timeLeft == 0) {
+			clearInterval(countDown);
+			displayScore();
+			}
+	}, 1000);
+
   // Display initial question
   displayNext();
   
